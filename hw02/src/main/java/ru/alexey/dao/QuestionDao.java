@@ -9,5 +9,4 @@ public interface QuestionDao {
 
     List<Question> getAllQuestions();
 
-    List<Answer> getAllAnswers();
 }

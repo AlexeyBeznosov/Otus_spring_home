@@ -5,7 +5,7 @@ import ru.alexey.domain.Question;
 
 import java.util.List;
 
-public interface Service {
+public interface QuestionAnswerService {
 
     List<Question> getAllQuestions();
 
