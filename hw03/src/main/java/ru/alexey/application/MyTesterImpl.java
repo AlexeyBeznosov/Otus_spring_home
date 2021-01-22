@@ -45,11 +45,8 @@ public class MyTesterImpl implements Testable {
         System.out.print(message + ": " + countRightAnswer);
         if (countRightAnswer >= applicationConfig.getValueRightAnswerPass()) {
             message = messageSource.getMessage("Test passed", new String[]{}, applicationConfig.getLocale());
-
-            //System.out.println("Score: " + countRightAnswer + " - Test passed");
         } else {
             message = messageSource.getMessage("Test not passed", new String[]{}, applicationConfig.getLocale());
-            //System.out.println("Score: " + countRightAnswer + " - Test not passed");
         }
         System.out.println(" " + message);
     }
