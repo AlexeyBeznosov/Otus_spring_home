@@ -1,0 +1,4 @@
+application:
+  fileNameCsv: "/Questions.csv"
+  valueRightAnswerPass: 3
+  locale: ru_RU
