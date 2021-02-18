@@ -6,7 +6,7 @@
 	<groupId>ru.alexey</groupId>
 	<artifactId>hw05</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>demoJDBC</name>
 	<description>Spring JDBC</description>
 
 	<parent>

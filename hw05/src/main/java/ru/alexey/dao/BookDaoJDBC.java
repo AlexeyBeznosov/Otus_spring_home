@@ -13,11 +13,9 @@ import java.util.Map;
 public class BookDaoJDBC implements BookDao {
 
     private final NamedParameterJdbcOperations jdbc;
-    private final BookRowMapper bookRowMapper;
 
-    public BookDaoJDBC(NamedParameterJdbcOperations jdbc, BookRowMapper bookRowMapper) {
+    public BookDaoJDBC(NamedParameterJdbcOperations jdbc) {
         this.jdbc = jdbc;
-        this.bookRowMapper = bookRowMapper;
     }
 
     @Override
@@ -32,8 +30,10 @@ public class BookDaoJDBC implements BookDao {
     @Override
     public Book getByName(String title) {
         try {
-            return jdbc.queryForObject("select id, title, id_author, id_genre from book where title = :title",
-                    Map.of("title", title), bookRowMapper);
+            return jdbc.queryForObject("select b.id, b.title, b.id_author, a.name name_author, b.id_genre, g.name name_genre " +
+                            "from book b left join author a on b.id_author = a.id " +
+                            "left join genre g on b.id_genre = g.id where b.title = :title",
+                    Map.of("title", title), new BookRowMapper());
         } catch (EmptyResultDataAccessException e) {
             return null;
         }
@@ -42,8 +42,10 @@ public class BookDaoJDBC implements BookDao {
     @Override
     public Book getById(Long id) {
         try {
-            return jdbc.queryForObject("select id, title, id_author, id_genre from book where id = :id",
-                    Map.of("id", id), bookRowMapper);
+            return jdbc.queryForObject("select b.id, b.title, b.id_author, a.name name_author, b.id_genre, g.name name_genre " +
+                            "from book b left join author a on b.id_author = a.id " +
+                            "left join genre g on b.id_genre = g.id where b.id = :id",
+                    Map.of("id", id), new BookRowMapper());
         } catch (EmptyResultDataAccessException e) {
             return null;
         }

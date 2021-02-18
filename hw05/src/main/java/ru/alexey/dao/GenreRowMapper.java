@@ -1,7 +1,6 @@
 package ru.alexey.dao;
 
 import org.springframework.jdbc.core.RowMapper;
-import ru.alexey.domain.Author;
 import ru.alexey.domain.Genre;
 
 import java.sql.ResultSet;
